@@ -1,0 +1,70 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.list__container {
+
+    & .list {
+        width: 100%;
+        display: inline-block;
+        padding: 5px 0px;
+        overflow-y: auto;
+    
+        & > ul {
+            list-style-type: none;
+    
+            & > li {
+                transition: $transition_base !important;
+                font-size: 20px;
+                line-height: 40px;
+                cursor: pointer;
+                padding-left: 10px;
+                padding-right: 10px;
+                white-space: nowrap;
+                color: map.get($light, "text_soft");
+                font-weight: 500;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                
+
+                @include respond-to(sm) {
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+    
+                &:hover {
+                    color: map.get($light, "nav_selected");
+                }
+    
+                &.selected {
+                    background-color: map.get($light, "nav_hover");
+                    color: map.get($light, "nav_selected");
+                }
+            }
+        }
+    }
+}
+
+
+body.dark {
+    & .list__container {
+
+        & .list {
+            & > ul {
+        
+                & > li {
+                    color: map.get($dark, "text_soft");
+
+                    &:hover {
+                        color: map.get($dark, "text_hard");
+                    }
+        
+                    &.selected {
+                        background-color: map.get($dark, "nav_hover");
+                        color: map.get($dark, "text_hard");;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,157 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+
+.splide_portfolio__container {
+    height: 0px;
+    /*min-height: 440px;
+
+    @include respond-to(lg) {
+        min-height: 376px;
+    }
+
+    @include respond-to(md) {
+        min-height: 320px;
+    }
+
+    @include respond-to(sm) {
+        min-height: 400px;
+    }*/
+    flex-grow: 1;
+
+    & * {
+        transition: none;
+    }
+
+    & .splide {
+        height: 100%;
+
+        & .splide__arrows { 
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+            & .splide__arrow {
+                background-color: transparent;
+                transition: $transition_base;
+                //height: 100%;
+                border-radius: 0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+                &:disabled {
+                    width: 0;
+                }
+                
+                & > svg {
+                    width: 50px;
+                    height: auto;
+                    fill: map.get($light, "text_soft");
+                    transition: $transition_base;                    
+                }
+
+                &:hover {
+                    & svg {
+                        fill: map.get($light, "nav_selected");
+                    }
+                }
+                
+                &--prev:hover {
+                    & svg {
+                        translate: -10px;
+                    }
+                }
+
+                &--next:hover {
+                    & svg {
+                        translate: 10px;
+                    }
+                }
+            }
+        }
+
+        & .splide__track {
+            height: 100%;
+
+            & > ul {
+                
+                &  > li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+    
+                    & .splide__slide-container {
+                        height: 100%;
+                        
+                        & > img {
+                            cursor: zoom-in;
+                            height: 100%;
+                            width: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        & .splide__pagination {
+            bottom: -1.5rem;
+            @include respond-to(xs) {
+                bottom: 0;
+            }
+            & .splide__pagination__page  {
+                background-color: rgba(map.get($light, "text_soft"), .8);
+                margin: 7px;
+
+                /*@include respond-to(xs) {
+                    width: 10px;
+                    height: 10px;
+                    margin: 10px;
+                }*/
+
+                &.is-active {
+                    background-color: rgba(map.get($light, "nav_selected"), .95 );
+                }
+            }
+        }
+    }
+    
+}
+
+
+body.dark {
+    & .splide_portfolio__container {
+        & .splide {
+            & .splide__arrows { 
+    
+                & .splide__arrow {
+                    & > svg {
+                        fill: map.get($dark, "text_soft");
+                    }
+                    &:hover {
+                        & svg {
+                            fill: map.get($dark, "nav_selected");
+                        }
+                    }
+                }
+    
+            }
+    
+        
+            & .splide__pagination {
+                bottom: -1.5rem;
+                @include respond-to(xs) {
+                    bottom: 0;
+                }
+                & .splide__pagination__page  {
+                    background-color: rgba(map.get($dark, "text_soft"), .9 );
+    
+                    &.is-active {
+                        background-color: rgba(map.get($dark, "nav_selected"), .95 );
+                    }
+                }
+            }
+        }
+    }
+}

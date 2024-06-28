@@ -1,0 +1,330 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+
+
+
+svg {
+    &.icon_design.icon_design {
+
+
+        .icon_design__layer-1 {
+            fill:map.get($light, "text_soft");
+        }
+        .icon_design__layer-1,.icon_design__layer-2,.icon_design__layer-3,.icon_design__layer-4,.icon_design__layer-5 {
+            fill-rule:evenodd;
+        }
+        .icon_design__layer-2 {
+            fill:#ccc;
+        }
+        .icon_design__layer-3 { 
+            fill:#83b3d7;
+        }
+        .icon_design__layer-4 { 
+            fill:#3a91be;
+        } 
+        .icon_design__layer-5 { 
+            fill:#e99688;
+        }
+
+        @include respond-to(xs) {
+            width: 80px;
+            height: 60px;
+        }
+    }
+
+    &.icon_frontend {
+        .icon_frontend__layer-1 {
+            fill: #e99688;
+        }
+        .icon_frontend__layer-2 {
+            fill:map.get($light, "text_soft");
+        }
+        .icon_frontend__layer-3 { 
+            fill:#3a91be;
+        }
+    }
+
+    &.icon_components {
+        .icon_components__layer-1 {
+            fill: map.get($light, "text_soft");
+        }
+        .icon_components__layer-2 {
+            fill:#3a91be;
+        }
+        .icon_components__layer-3 { 
+            fill:#3a91be;
+        }
+        .icon_components__layer-4 { 
+            fill:#e99688;
+        }
+        .icon_components__layer-5 { 
+            fill:#3a91be;
+        }
+    }
+
+    // &.icon_sysdesign2 {
+    //     .icon_sysdesign2__layer-1 {
+    //         fill: map.get($light, "text_soft");
+
+    //     }
+    //     .icon_sysdesign2__layer-2 {
+    //         fill: #3a91be;
+    //     }
+
+    //     .icon_sysdesign2__layer-3 {
+    //         fill:#e99688;
+    //     }
+
+    //     .icon_sysdesign2__layer-4 {
+    //         fill: #3a91be;;
+    //     }
+
+    //     .icon_sysdesign2__layer-5 {
+    //         fill: #3a91be;
+    //     }
+    // }
+
+
+    &.icon_sysdesign {
+        .icon_sysdesign__layer-1 {
+            fill: map.get($light, "text_soft");
+
+        }
+        .icon_sysdesign__layer-2 {
+            fill: #3a91be;
+        }
+
+        .icon_sysdesign__layer-3 {
+            fill:#e99688;
+        }
+
+        .icon_sysdesign__layer-4 {
+            fill: #e99688;
+        }
+
+        .icon_sysdesign__layer-5 {
+            fill: #3a91be;
+        }
+
+        
+        .icon_sysdesign__layer-6 {
+            fill: #3a91be;
+        }
+
+        
+        .icon_sysdesign__layer-7 {
+            fill: #3a91be;
+        }
+
+        .icon_sysdesign__layer-9 {
+            fill: #3a91be;
+        }
+
+        
+        .icon_sysdesign__layer-12 {
+            fill: #3a91be;
+        }
+        
+        .icon_sysdesign__layer-13 {
+            fill: #e99688;
+        }
+
+        .icon_sysdesign__layer-16 {
+            fill: #3a91be;
+        }
+
+    }
+
+
+    &.icon_backend {
+        .icon_backend__layer-1 {
+            fill: map.get($light, "text_soft");
+
+        }
+        .icon_backend__layer-2 {
+            fill: #3a91be;
+        }
+
+    }
+
+
+    &.icon_testing {
+        .icon_testing__layer-1 {
+            fill: map.get($light, "text_soft");
+        }
+        .icon_testing__layer-2 {
+            fill: #e99688;
+        }
+        .icon_testing__layer-3 {
+            fill: #3a91be;
+        }
+        .icon_testing__layer-5 {
+            fill: #3a91be;
+        }
+
+    }
+
+
+
+    &.icon_solution {
+        .icon_solution__border {
+            fill: map.get($light, "text_soft");
+        }
+
+        .icon_solution__content {
+            fill: #3a91be;
+        }
+    }
+
+    &.icon_danger {
+        .icon_danger__border {
+            fill: map.get($light, "text_soft");
+        }
+        .icon_danger__sign {
+            fill: #db5138;
+        }
+    }
+
+}
+
+.icon_issue {
+    position: relative;
+    svg.icon_frontend {
+        .icon_frontend__layer-3 {
+            display: none;
+        }
+    }
+    svg.icon_danger {
+        height: auto;
+        position: absolute;
+        width: 30%;
+        left: 50%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+
+
+body.dark {
+    svg {
+        &.icon_design.icon_design {
+            .icon_design__layer-1 {
+                fill:map.get($dark, "text_soft");
+            }
+        }
+
+        &.icon_frontend {
+            .icon_frontend__layer-2 {
+                fill:map.get($dark, "text_soft");
+            }
+        }
+
+        &.icon_components {
+            .icon_components__layer-1 {
+                fill: map.get($dark, "text_soft");
+            }
+        }
+
+        &.icon_sysdesign {
+            .icon_sysdesign__layer-1 {
+                fill: map.get($dark, "text_soft");
+            }
+            .icon_sysdesign__layer-2 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-3 {
+                fill:#e99688;
+            }
+            .icon_sysdesign__layer-4 {
+                fill: #e99688;
+            }
+            .icon_sysdesign__layer-5 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-6 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-7 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-9 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-12 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-13 {
+                fill: #e99688;
+            }
+            .icon_sysdesign__layer-16 {
+                fill: #3a91be;
+            }
+            .icon_sysdesign__layer-8,
+            .icon_sysdesign__layer-10,
+            .icon_sysdesign__layer-11,
+            .icon_sysdesign__layer-14,
+            .icon_sysdesign__layer-15,
+            .icon_sysdesign__layer-17 {
+                fill: map.get($dark, "text_soft");
+            }
+        }
+    
+    
+        &.icon_backend {
+            .icon_backend__layer-1 {
+                fill: map.get($dark, "text_soft");
+    
+            }
+            .icon_backend__layer-2 {
+                fill: #3a91be;
+            }
+    
+        }
+    
+    
+        &.icon_testing {
+            .icon_testing__layer-1 {
+                fill: map.get($dark, "text_soft");
+            }
+            .icon_testing__layer-2 {
+                fill: #e99688;
+            }
+            .icon_testing__layer-3 {
+                fill: #3a91be;
+            }
+
+            .icon_testing__layer-4 {
+                fill: map.get($dark, "text_soft");
+            }
+            .icon_testing__layer-5 {
+                fill: #3a91be;
+            }
+    
+        }
+
+
+        &.icon_solution {
+            .icon_solution__border {
+                fill: map.get($dark, "text_soft");
+            }
+
+            .icon_solution__content {
+                fill: #3a91be;
+            }
+        }
+
+        &.icon_danger {
+            .icon_danger__border {
+                fill: map.get($dark, "text_soft");
+            }
+            .icon_danger__sign {
+                fill: #e99688;
+            }
+        }
+
+    }
+
+    
+}

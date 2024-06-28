@@ -1,0 +1,162 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+
+
+
+.resume-tiles {
+    width: 100%;
+    margin-top: 15px;
+    display: flex; 
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+
+    @include respond-to(xs) {
+        display: none;
+    }
+
+
+    & .tile__arrow {
+        width: 10%;
+        height: 10%;
+        align-self: center;
+        transition: fill $transition_theme, opacity $transition_scroll $delay_transition*2 !important;
+        opacity: 0;
+
+        @include respond-to(sm) {
+            width: 5%;
+        }
+
+        & .icon_arrow_right {
+            width: 100%;
+            height: 100%;
+            fill: map.get($light, "bg_side-panel");
+        }
+
+        &.show {
+            transition: fill $transition_theme, opacity $transition_scroll $delay_transition*2 !important;
+            opacity: 1;
+        }
+    }
+
+
+    & .tile {
+        scale: .8;
+        width: 40%;
+        padding: 10px;
+        //height: 100%;
+        opacity: 0;
+        transition: border $transition_base, background-color $transition_theme, opacity $transition_scroll !important;
+        border-radius: 5px;
+
+        @include respond-to(sm) {
+            width: 45%;
+        }
+
+
+        & > .tile__hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row-reverse;
+            height: 50px;
+
+            @include respond-to(sm) {
+                flex-direction: column;
+                min-height: 80px;
+            }
+
+            h4 {
+                margin-top: 0;
+                font-size: 20px;
+
+                @include respond-to(sm) {
+                    font-size: 18px;
+                }
+
+                @include respond-to(xs) {
+                    font-size: 16px;
+                }
+            }
+
+            & .icon_issue {
+                height: 100%;
+            }
+
+            svg {
+                height: 100%;
+
+                & path {
+                    width: 100%;
+                    height: 100%;
+                }
+
+
+            }
+
+        }
+        
+        & > .tile__line {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        & .tile__list {
+            margin-left: 5px;
+            list-style: none;
+            margin-top: 10px;
+            font-size: 16px;
+            @include respond-to(sm) {
+                font-size: 14px;
+            }
+
+            @include respond-to(xs) {
+                font-size: 12px;
+            }
+
+            & > li::before {
+                content: "•"; 
+                color: map.get($light, "pink_light");
+                margin-right: 8px;
+            }
+
+        }
+
+
+
+        &:nth-child(3) {
+            transition: border $transition_base, background-color $transition_theme, opacity $transition_scroll $delay_transition*2, right $transition_base $delay_transition*1, transform $transition_base !important;
+            position: relative;
+            right: 100%;
+            top: 0;
+            transform: translateX(100%);
+            
+            & .tile__list > li::before {
+                color: #83b3d7;
+            }
+        }
+
+
+
+        &.show {
+            scale: 1;
+            opacity: 1;
+
+
+            &:nth-child(3) {
+                right: 0;
+                transform: translateX(0);
+            }
+        }
+    }
+}
+
+
+
+body.dark {
+    .resume-tiles {   
+        & .icon_arrow_right {
+            fill: map.get($dark, "bg_side-panel");
+        }
+    }
+}

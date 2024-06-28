@@ -1,0 +1,61 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+
+
+.page_contact {
+
+    & .contact-me {
+        padding-bottom: 50px;
+
+        & .contact__container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: stretch;
+            justify-content: space-between;
+
+            @include respond-to(md) {
+                flex-direction: column;
+            }
+
+            & > div, & > form {
+                width: 48%;
+
+                @include respond-to(md) {
+                    width: 100%;
+                }
+            }
+
+            & .mail-me {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                @include respond-to(md) {
+                    margin-bottom: 20px;
+                }
+                
+                & > h4 {
+                    font-size: 27px;
+    
+                    @include respond-to(md) {
+                        font-size: 24px;
+                    }
+                }
+
+                & .link_button {
+                    margin-top: 30px;
+                    cursor: pointer;
+                }
+            }
+
+            & .my-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-bottom: 80px;
+            }
+        }
+    }
+}

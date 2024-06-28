@@ -1,0 +1,74 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+
+
+
+
+.tile {
+    background-color: map.get($light, "bg_side-panel");
+    border: 1px solid map.get($light, "border");
+    border-top: 5px solid map.get($light, "border");
+    padding: 20px;
+    
+
+    &:hover {
+        border-top: 5px solid map.get($light, "nav_selected");
+    }
+
+    & .tile__hero {
+
+        & > svg {
+            width: auto;
+        }
+
+        & svg {
+            height: 80px;
+            @include respond-to(xs) {
+                height: 60px;
+            }
+            
+            &.icon_design {
+                scale: .8;
+            }
+        }
+    
+        & h4 {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+
+    & > .tile__line {
+        width: 60px;
+        height: 2px;
+        margin-top: 20px;
+        background-color: map.get($light, "separator");
+    }
+
+    & > p {
+        margin-top: 20px;
+        white-space: pre-line;
+    }
+
+}
+
+
+
+
+body.dark {
+    & .tile {
+        background-color: map.get($dark, "bg_side-panel");
+        border: 1px solid map.get($dark, "border");
+        border-top: 5px solid map.get($dark, "border");
+
+        &:hover {
+            border-top: 5px solid map.get($dark, "nav_selected");
+        }
+
+        & .tile__line {
+            background-color: map.get($dark, "separator");;
+        }
+    }
+}

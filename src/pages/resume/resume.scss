@@ -1,0 +1,97 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+
+.page_resume {
+    padding-bottom: 120px;
+
+    & > .skills {
+        width: 100%;
+
+        & > .skills__container {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            @include respond-to(md) {
+                flex-direction: column;
+            }
+        }
+    }
+
+    & > .history {
+
+        & .history__section {
+            margin-bottom: 50px;
+
+            & .history__header {
+                display: flex;
+    
+                & svg {
+                    width: 25px;
+                    margin-right: 15px;
+                    fill: map.get($light, "text_soft");
+                    transition: $transition_theme;
+                }
+    
+                & > h3 {
+                    font-size: 28px;
+                    color: map.get($light, "text_hard");
+                    letter-spacing: 0.1rem;
+
+                    @include respond-to(sm) {
+                        font-size: 24px;
+                    }
+
+                    @include respond-to(xs) {
+                        font-size: 20px;
+                    }
+                }
+            }
+    
+            & .history__content {
+                margin-top: 30px;
+                width: 100%;
+                border-left: 3px solid map.get($light, "border");
+                transition: border $transition_theme;
+            }
+        }
+    }
+
+    & .link_button {
+        @include respond-to(xs) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+}
+
+
+
+body.dark {
+    & .page_resume{
+
+        & > .history {
+    
+            & .history__section {
+    
+                & .history__header {
+
+                    & svg {
+                        fill: map.get($dark, "text_soft");
+                    }
+        
+                    & > h3 {
+                        color: map.get($dark, "text_hard");
+                    }
+                }
+        
+                & .history__content {
+                    border-left: 3px solid map.get($dark, "border");
+                }
+            }
+        }
+    }
+} 

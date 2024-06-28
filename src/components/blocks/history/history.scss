@@ -1,0 +1,195 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.history__block {
+    display: flex;
+    margin-top: 70px;
+
+    &:first-child {
+        margin-top: 40px;
+    }
+
+    @include respond-to(sm) {
+        flex-direction: column;
+        padding-left: 20px;
+    }
+
+    @include respond-to(xs) {
+        margin-top: 40px;
+    }
+
+    & > div:first-of-type {
+        font-size: 18px;
+        color: map.get($light, "text_soft");
+        width: 25%;
+        min-width: 200px;
+        transition: color $transition_theme;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        margin-left: 25px;
+        font-weight: 700;
+        max-width: 230px;
+
+        @include respond-to(sm) {
+            min-width: 170px;
+            font-size: 16px;
+            margin-left: 0px;
+            width: auto;
+            max-width: none;
+        }
+
+        @include respond-to(xs) {
+            min-width: 90px;
+            font-size: 14px;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            border: 3px solid map.get($light, "border");
+            width: 10px;
+            height: 10px;
+            background-color: map.get($light, "bg");
+            border-radius: 50%;
+            left: -34px;
+            top: 3px;
+            transition: border $transition_theme, background-color $transition_base; 
+            
+            @include respond-to(sm) {
+                left: -29px;
+            }
+
+        }
+    }
+
+    & .history__description {
+        width: 75%;
+        opacity: 0;
+        transform: translateX(5%);
+        transition: transform $transition_scroll, opacity $transition_scroll, filter $transition_scroll;
+        filter: blur(8px);
+
+        @include respond-to(sm) {
+            width: 100%;
+        }
+
+        & > h4 {
+            color: map.get($light, "text_em");
+            font-size: 23px;
+            position: relative;
+
+            @include respond-to(sm) {
+                font-size: 20px;
+                margin-top: 17px;
+            }
+    
+            @include respond-to(xs) {
+                font-size: 18px;
+            }
+        }
+
+        & a {
+            text-decoration: none;
+            //display: block;
+            font-size: 18px;
+            margin-top: 5px;
+            color: map.get($light, "text_hard");
+            font-weight: 600;
+            transition: color $transition_theme; 
+
+            @include respond-to(sm) {
+                font-size: 16px;
+                margin-top: 8px;
+            }
+    
+            @include respond-to(xs) {
+                font-size: 14px;
+            }
+        }
+
+        & span {
+            display: block;
+            font-size: 18px;
+            margin-top: 5px;
+            color: map.get($light, "text_hard");
+            font-weight: 600;
+
+            @include respond-to(sm) {
+                font-size: 16px;
+                margin-top: 8px;
+            }
+    
+            @include respond-to(xs) {
+                font-size: 14px;
+            }
+        }
+
+        & > p {
+            font-size: 18px;
+            margin-top: 15px;
+            color: map.get($light, "text_soft");
+
+            @include respond-to(sm) {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+    
+            @include respond-to(xs) {
+                font-size: 14px;
+            }
+        }
+
+        &.show {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateX(0);
+            transition: transform $transition_scroll, opacity $transition_scroll, filter $transition_scroll;
+        }
+    }
+
+    &:hover {
+        & > div:first-of-type::before {
+            background-color: map.get($light, "nav_selected");
+        }
+    }
+
+}
+
+
+body.dark {
+    & .history__block {
+        & > div:first-of-type {
+            color: map.get($dark, "text_soft");
+            transition: color $transition_theme;
+
+            &::before {
+                border: 3px solid map.get($dark, "border");
+                background-color: map.get($dark, "bg");
+                transition: border $transition_theme, background-color $transition_base;
+            }
+        }
+    
+        & .history__description {
+            & > h4 {
+                color: map.get($dark, "text_em");
+            }
+            & a {
+                color: map.get($dark, "text_hard");
+            }
+            & span {
+                color: map.get($dark, "text_hard");
+            }
+            & > p {
+                color: map.get($dark, "text_soft");
+            }
+        }
+        &:hover {
+            & > div:first-of-type::before {
+                background-color: map.get($dark, "nav_selected");
+            }
+        }
+    }
+}

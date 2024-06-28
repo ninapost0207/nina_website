@@ -1,0 +1,78 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.list3d__container {
+    height: 90px;
+    width: 240px;
+    overflow: hidden;
+    transition: opacity 0.25s cubic-bezier(.63,0,.94,.73)!important;
+    opacity: 1;
+    
+    &.muted {
+        transition: opacity 0.25s cubic-bezier(0,1,.52,1)  !important;
+        opacity: 0.2;
+    }
+
+
+    & .list3d {
+        height: 100%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        position: relative;
+        transition: $transition_list3d !important;
+        transform-style: preserve-3d;
+        translate: calc(-50% - 50px); // should be list3d__container.width
+        top: 0%;
+        
+
+    
+        & div {
+            display: inline-block;
+            width: 100%;
+            transition: translate 1s, opacity $transition_list3d !important;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding-left: 10px;
+
+            & a {
+                width: 100px;
+                transition: $transition_base;
+                white-space: nowrap;
+                font-size: 26px;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: map.get($light, "text_soft");
+                transition: color 1s !important;
+                font-weight: 600;
+                margin-left: 35px;
+            }
+    
+            &.selected {
+                & a {
+                    color: map.get($light, "nav_selected");
+                }
+            }
+        }
+    }
+}
+
+
+body.dark {
+    & .list3d__container {
+        & .list3d {
+            & div {
+                & a {
+                    color: map.get($dark, "nav_selected");
+                }
+        
+                &.selected {
+                    & a {
+                        color: map.get($dark, "nav_selected");
+                    }
+                }
+            }
+        }
+    }
+}

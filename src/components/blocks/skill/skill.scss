@@ -1,0 +1,91 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.resume__skill {
+    width: 48%;
+    margin-top: 40px;
+
+    @include respond-to(md) {
+        width: 100%;
+    }
+
+    & h5 {
+        font-size: 18px;
+        color: map.get($light, "text_hard");
+        transition: $transition_theme;
+
+        @include respond-to(sm) {
+            font-size: 16px;
+        }
+    }
+
+    & > .skill__graph {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & > span {
+            font-size: 18px;
+            color: map.get($light, "text_soft");
+            margin-right: 20px;
+            transition: $transition_theme;
+            transform: translateX(-100%);
+            opacity: 0;
+
+            @include respond-to(sm) {
+                font-size: 15px;
+            }
+
+            &.visible {
+                transform: none;
+                opacity: 1;
+                transition: opacity $transition_skill, transform $transition_skill;
+
+            }
+        }
+
+        & > div {
+            width: 100%;
+            height: 5px;
+            border-radius: 3px;
+            background-color: map.get($light, "border");
+            transition: $transition_theme;
+
+
+
+            & > div {
+                width: 0;
+                height: 100%;
+                border-radius: 3px 0px 0px 3px;
+                background-color: map.get($light, "nav_selected");
+                transition: background-color 0s, width $transition_skill;
+            }
+        }
+    }
+}
+
+
+body.dark {
+    & .resume__skill {
+        & h5 {
+            color: map.get($dark, "text_hard");
+        }
+    
+        & > .skill__graph {
+            & > span {
+                color: map.get($dark, "text_soft");
+            }
+    
+            & > div {
+                background-color: map.get($dark, "border");
+    
+                & > div {
+                    background-color: map.get($dark, "nav_selected");
+                }
+            }
+        }
+    }
+}

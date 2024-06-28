@@ -1,0 +1,127 @@
+$xl: 1600px;
+$lg: 1241px;
+$md: 992px;
+$sm: 768px;
+$xs: 480px;
+
+$black: #000;
+$white: #FFF;
+
+$transition_skill: 1s cubic-bezier(.21,.68,.27,.99);
+$transition_list3d: 1s cubic-bezier(.21,.68,.27,.99);
+
+$delay_transition: 0.2s;
+$transition_scroll: 0.4s ease-in-out;
+
+$transition_base: 0.4s ease-out;
+$transition_gallery: 0.2s ease-out;
+$transition_theme : 1s linear;
+
+$page-padding_top: 0px;
+$page-padding_bottom: 0px;
+$sidePanelWidthFull: 300px;
+$sidePanelWidthSmall: 250px;
+
+$brad_xl: 15px;
+$brad_md: 10px;
+$brad_sm: 6px;
+$brad_xs: 3px;
+
+
+
+$dark: (
+    /*"bg": #10121B,
+    "bg_side-panel": #191D2B,
+    "text_em": #037FFF, // #0572E4,
+    "separator": #2E344E,
+    "border": #2E344E,
+    "border_light": #2E344E,
+    "nav_hover": rgba(3,127,255,.2),
+    "nav_selected": #037FFF,
+    "text_soft": #A4ACC4,
+    "text_hard": #FFF,
+    "text_shadow": rgba(25,29,43,.44),
+    "scroll-track": #383838,
+    "scroll-thumb": #6B6B6B,//#6B6B6B,
+    "modal_bg": rgba(26, 26, 26, 0.9),
+    "pink_light": #e99688,
+    "link_noactive": #235586,
+    "arrow_splide": #888,*/
+
+    "bg": #10121B,
+    "bg_side-panel": #191D2B,
+    "text_em": #FF7B89, // #0572E4,
+    "separator": #2E344E,
+    "border": #2E344E,
+    "border_light": #2E344E,
+    "nav_hover": rgba(3,127,255,.2),
+    "nav_selected": #e66d79,
+    "text_soft": #A4ACC4,
+    "text_hard": #FFF,
+    "text_shadow": rgba(25,29,43,.44),
+    "scroll-track": #383838,
+    "scroll-thumb": #6B6B6B,//#6B6B6B,
+    "modal_bg": rgba(26, 26, 26, 0.9),
+    "pink_light": #e99688,
+    "link_noactive": #8A5082,
+    "arrow_splide": #888,
+);
+
+$light: (
+    /*"bg": #F1F1F1,
+    "bg_side-panel": #E4E4E4,
+    "text_em": #037FFF,
+    "separator": #CBCED8,
+    "border": #CBCED8,
+    "border_light": #CBCED8,
+    "nav_hover": rgba(3,127,255,.2),
+    "nav_selected": #037FFF,
+    "text_soft": #313131,
+    "text_hard": #151515,
+    "text_shadow": rgba(215,220,230,.44),
+    "scroll-track": #383838,
+    "scroll-thumb": #6B6B6B,//#6B6B6B,
+    "modal_bg": rgba(#eeeeee, .9),
+    "pink_light": #e99688,
+    "link_noactive": #4872b9,
+    "arrow_splide": #888,*/
+
+    "bg": #F1F1F1,
+    "bg_side-panel": #E4E4E4,
+    "text_em": #FF7B89,
+    "separator": #CBCED8,
+    "border": #CBCED8,
+    "border_light": #CBCED8,
+    "nav_hover": rgba(3,127,255,.2),
+    "nav_selected": #e66d79,
+    "text_soft": #313131,
+    "text_hard": #151515,
+    "text_shadow": rgba(215,220,230,.44),
+    "scroll-track": #383838,
+    "scroll-thumb": #6B6B6B,//#6B6B6B,
+    "modal_bg": rgba(#eeeeee, .9),
+    "pink_light": #e99688,
+    "link_noactive": #8A5082,
+    "arrow_splide": #888,
+);
+
+
+
+@mixin  respond-to($width) {
+    @if $width == xs { 
+        @media (max-width: $xs) { @content } 
+    };
+    @if $width == sm { 
+        @media (max-width: $sm) { @content } 
+    };
+    @if $width == md { 
+        @media (max-width: $md) { @content } 
+    };
+    @if $width == lg { 
+        @media (max-width: $lg) { @content } 
+    };
+    @if $width == xl { 
+        @media (max-width: $xl) { @content } 
+    }
+}
+

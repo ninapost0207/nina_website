@@ -1,0 +1,453 @@
+@use "sass:map";
+@use "./variables" as *;
+@use "./fonts" as *;
+@use "./icons" as *;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Nunito;
+}
+
+a, button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a.decorated {
+    position: relative;
+    &::after {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        content: "";
+        width: 0;
+        height: 3px;
+        transition: $transition_base;
+    }
+
+    &:hover::after {
+        width: 100%;
+        transition: $transition_base;
+
+        background-color: map.get($light, "text_em");
+    }
+}
+
+
+body {
+    font-family: "Roboto-Regular", sans-serif;
+    background-color: map.get($light, "bg");
+    width: 100%;
+    color: $black;
+    min-height: 100vh;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: transparent;
+    }   
+    
+    &::-webkit-scrollbar-track {
+        background-color: map.get($light, "scroll-track");
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: map.get($light, "scroll-thumb");
+        border-radius: 4px;
+    }
+
+    &.dark {
+        background-color: map.get($dark, "bg");
+        color: $white;
+    }
+
+    &.noscroll {
+        overflow: hidden;
+    }
+}
+
+
+em {
+    color: map.get($light, "text_em");
+    font-style: normal;
+    transition: $transition_theme;
+    white-space: nowrap;
+}
+
+
+.link_button {
+    width: 200px;
+    height: 50px;
+    background-color: map.get($light, "nav_selected");
+    color: $white;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    border: none;
+    font-size: 16px;
+    letter-spacing: .1rem;
+    //border-radius: $brad_sm;
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background-color: $white;
+        transition: $transition_base;
+    }
+
+    &:hover::before {
+        width: 100%;
+        transition: $transition_base;
+    }
+}
+
+.page-container {
+    margin-left: $sidePanelWidthFull;
+    overflow: hidden;
+    background-color: map.get($light, "bg");
+    padding: 0px 30px;
+    margin-right: 5px;
+    min-height: 100vh;
+    transition: background-color $transition_theme, margin $transition_base;
+    
+    @include respond-to(xl) {
+        margin-left: $sidePanelWidthSmall;
+    }
+
+    @include respond-to(lg) {
+        margin-left: 0;
+    }
+
+    @include respond-to(md) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    @include respond-to(sm) {
+        padding-left: 25px;
+        padding-right: 15px;
+    }
+
+    @include respond-to(xs) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    & div {
+        transition: background-color $transition_theme;
+    }
+
+    & section {
+        padding-top: 120px;
+
+        @include respond-to(md) {
+            padding-top: 100px;
+        }  
+
+         @include respond-to(sm) {
+            padding-top: 80px;
+        }  
+    }
+
+    &.nav_opened {
+
+        /*@include respond-to(lg) {
+            margin-left: $sidePanelWidthSmall;
+        } */
+
+        @include respond-to(md) {
+           margin-left: 0;
+        }  
+    }
+
+    & > div:first-of-type {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1300px;
+
+        @include respond-to(lg) {
+            max-width: 900px;
+        }
+
+        @include respond-to(md) {
+            max-width: 750px;
+        }
+
+        @include respond-to(sm) {
+            max-width: 550px;
+        }
+    }
+
+
+    h1 {
+        font-size: 52px;
+        color: map.get($light, "text_hard");
+        transition: color $transition_theme;
+
+        @include respond-to(md) {
+            font-size: 46px;
+        }
+
+        @include respond-to(sm) {
+            font-size: 42px;
+        }
+    }
+    
+    
+    h2 {
+        font-size: 42px;
+        color: map.get($light, "text_hard");
+        position: relative;
+        text-transform: uppercase;
+        margin-bottom: 70px;
+        line-height: 200%;
+        letter-spacing: 0.15rem;
+        transition: color $transition_theme;
+
+        @include respond-to(md) {
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        @include respond-to(sm) {
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+    
+        & > em {
+            position: absolute;
+            font-size: 96px;
+            font-weight: 800;
+            top: 55px;
+            left: 0px;
+            color: map.get($light, "text_shadow");
+            white-space: no-wrap;
+            transition: color $transition_theme;
+            user-select: none;
+
+            @include respond-to(xl) {
+                top: 45px;
+                font-size: 68px;
+            }
+
+            @include respond-to(md) {
+                font-size: 64px;
+            }
+
+            @include respond-to(sm) {
+                top: 40px;
+                font-size: 60px;
+            }
+
+            @include respond-to(xs) {
+                top: 35px;
+                font-size: 50px;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            content: "";
+            height: 5px;
+            width: 100px;
+            border-radius: 3px;
+            background-color: rgba(map.get($light, "nav_selected"), 0.2);
+        }
+
+        &::after {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            content: "";
+            height: 5px;
+            width: 40px;
+            border-radius: 3px;
+            background-color: map.get($light, "nav_selected");
+        }
+    }
+
+    & h3 {
+        transition: color $transition_theme;
+    }
+    
+    & h4 {
+        color: map.get($light, "text_hard");
+        font-size: 22px;
+        transition: color $transition_theme;
+
+        @include respond-to(sm) {
+            font-size: 20px;
+        }
+    }
+    
+    & ul li {
+        transition: $transition_theme;
+    }
+
+    
+    & p {
+        color: map.get($light, "text_soft");
+        font-size: 20px;
+        line-height: 170%;
+        transition: color $transition_theme;
+
+        @include respond-to(lg) {
+            font-size: 18px;
+        }
+
+        @include respond-to(md) {
+            font-size: 16px;
+        }
+
+        @include respond-to(sm) {
+            font-size: 15px;
+        }
+    }
+
+    & b { 
+        transition: color $transition_theme;
+    }
+
+    & span {
+        transition: color $transition_theme;
+    }
+
+}
+
+
+
+
+
+
+body.dark {
+    transition: $transition_theme;
+    &::-webkit-scrollbar-track {
+        background-color: map.get($dark, "scroll-track");
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: map.get($dark, "scroll-thumb");
+        border-radius: 4px;
+    }
+
+    em {
+        color: map.get($dark, "text_em");
+        font-style: normal;
+        transition: $transition_theme;
+    }
+
+    .side-panel img,
+    .portfolio__content img {
+        filter: brightness(0.8) contrast(1.2);
+    }
+
+
+    .link_button {
+        background-color: map.get($dark, "nav_selected");
+    }
+
+    .page-container {
+        background-color: map.get($dark, "bg");
+        transition: background-color $transition_theme, margin $transition_base;
+
+        & div {
+            transition: background-color $transition_theme;
+        }
+
+        & h1 {
+            color: map.get($dark, "text_hard");
+            transition: color $transition_theme;
+        }
+
+        h2 {
+            color: map.get($dark, "text_hard");
+            transition: color $transition_theme;
+
+            & > em {
+                color: map.get($dark, "text_shadow");
+                transition: color $transition_theme;
+            }
+        }
+
+        & h3 {
+            transition: color $transition_theme;
+        }
+
+        & h4 {
+            color: map.get($dark, "text_hard");
+            transition: color $transition_theme;
+        }
+
+        & ul li {
+            transition: $transition_theme;
+        }
+
+        p {
+            color: map.get($dark, "text_soft");
+            transition: color $transition_theme;
+        }
+
+        & b { 
+            transition: color $transition_theme;
+        }
+
+        & span {
+            transition: color $transition_theme;
+        }
+
+    }
+
+
+    // svg {
+    //     &.icon_design.icon_design {
+    //         .icon_design__layer-1 {
+    //             fill:map.get($dark, "text_soft");
+    //         }
+    //     }
+
+    //     &.logo-frontend {
+    //         .frontend-2 {
+    //             fill:map.get($dark, "text_soft");
+    //         }
+    //     }
+
+    //     &.logo-components {
+    //         .components-1 {
+    //             fill: map.get($dark, "text_soft");
+    //         }
+    //     }
+
+
+    //     &.logo-solution {
+    //         .logo-solution__border {
+    //             fill: map.get($dark, "text_soft");
+    //         }
+
+    //         .logo-solution__content {
+    //             fill: #3a91be;
+    //         }
+    //     }
+
+    //     &.logo-danger {
+    //         .logo-danger__border {
+    //             fill: map.get($dark, "text_soft");
+    //         }
+    //         .logo-danger__sign {
+    //             fill: #e99688;
+    //         }
+    //     }
+
+    // }
+
+    
+}

@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+
+.list3d_v__container {
+    height: 80px;
+    width: 250px;
+    perspective: 100px;
+    overflow: hidden;
+
+    & .list3d_v {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        transition: .5s !important;
+        transform-style: preserve-3d;
+    
+        & div {
+            display: inline-block;
+            width: 100%;
+            transition: translate 1s, opacity .5s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+
+            & > a {
+                font-size: 20px;
+                color: map.get($light, "text_soft");
+                transition: color 1s !important;
+            }
+    
+            &.selected {
+                & a {
+                    color: map.get($light, "nav_selected");
+                }
+            }
+        }
+    }
+}

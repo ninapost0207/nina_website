@@ -1,0 +1,131 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.input__container, .textarea__container {
+    width: 100%;
+    border: 1px solid map.get($light, "border_light");
+    transition: border-color $transition_theme !important;
+    margin-top: 30px;
+    position: relative;
+
+    &:hover, &:has(input:focus) {
+        border: 1px solid map.get($light, "nav_selected");
+        transition: border-color $transition_base !important;
+    }
+
+    
+    & > label {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        padding: 0 10px;
+        font-size: 14px;
+        transition: background-color $transition_theme, color $transition_theme;
+        background-color: map.get($light, "bg");
+        color: map.get($light, "text_soft");
+        font-size: 16px;
+    }
+
+    & > input {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        padding: 15px 25px;
+        width: 100%;
+        font-size: 24px;
+        color: map.get($light, "text_soft");
+        transition: color $transition_theme;
+
+
+        @include respond-to(xs) {
+            font-size: 20px;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-text-fill-color: map.get($light, "text_soft");
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    }
+
+
+    & > textarea {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        padding: 15px 25px;
+        width: 100%;
+        font-size: 24px;
+        color: map.get($light, "text_soft");
+        transition: color $transition_theme;
+        resize: vertical;
+        min-height: 180px;
+
+        @include respond-to(xs) {
+            font-size: 20px;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-text-fill-color: map.get($light, "text_soft");
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    }
+
+    &.incorrect {
+        & label {
+            color: red;
+        }
+    }
+}
+
+body.dark {
+    .input__container, .textarea__container {
+        border: 1px solid map.get($dark, "border_light");
+        transition: border-color $transition_theme !important;
+
+        &:hover, &:has(input:focus), &:has(textarea:focus) {
+            border: 1px solid map.get($dark, "nav_selected");
+        }
+    
+        & > label {
+            background-color: map.get($dark, "bg");
+            transition: background-color $transition_theme, color $transition_theme;
+            color: map.get($dark, "text_soft");
+        }
+
+        & > textarea {
+            color: map.get($dark, "text_soft");
+            transition: color $transition_theme;
+        }
+
+        & > input {
+            background-color: transparent !important;
+            color: map.get($dark, "text_soft");
+            transition: color $transition_theme;
+            
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+                -webkit-text-fill-color: map.get($dark, "text_soft");
+                -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+                transition: background-color 5000s ease-in-out 0s;
+            }
+        }
+        
+        &.incorrect {
+            & label {
+                color: red;
+            }
+        }
+    }
+}
+

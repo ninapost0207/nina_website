@@ -1,0 +1,91 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+
+
+.page_home {
+    height: calc(100vh - $page-padding_top - $page-padding_bottom);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+        text-align: center;
+    }
+ 
+    & > p {
+        margin-top: 30px;
+        //font-size: 20px;
+        max-width: 70%;
+        text-align: center;
+        //line-height: 1.6em;
+
+        @include respond-to(lg) {
+            font-size: 20px !important;
+        }
+
+        @include respond-to(sm) {
+            font-size: 18px !important;
+        }
+    }
+
+    & > .socials {
+        display: flex;
+        
+        @include respond-to(sm) {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        & a {
+            width: 50px;
+            aspect-ratio: 1;
+            border: 2px solid map.get($light, "text_soft");
+            border-radius: 50%;
+            margin: 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            
+            &:hover {
+                border-color: map.get($light, "nav_selected");
+            }
+
+            & > svg {
+                transition: all $transition_base;
+                fill: map.get($light, "text_soft");
+                height: 90%;
+                width: 90%;
+
+                &:hover {
+                    fill: map.get($light, "nav_selected");
+                    transition: all $transition_base;
+                }
+            }
+        }
+    }
+}
+
+
+body.dark {
+    & .page_home {
+        & > .socials {
+            & a {
+                border-color: map.get($dark, "text_soft");
+                &:hover {
+                    border-color: map.get($dark, "nav_selected");
+                }
+                & > svg {
+                    transition: all $transition_base;
+                    fill: map.get($dark, "text_soft");
+                    &:hover {
+                        fill: map.get($dark, "nav_selected");
+                        transition: all $transition_base;
+                    }
+                }
+            }
+        }
+    }
+}

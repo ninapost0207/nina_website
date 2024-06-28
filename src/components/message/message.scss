@@ -1,0 +1,74 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../assets/css/base.scss';
+
+
+.message__container {
+    width: auto;
+    border: 2px solid map.get($light, "border");
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 80px;
+    background-color: map.get($light, "bg_side-panel");
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    transform: translate(0, -100%); //scale(0)
+    opacity: 0;
+    transition: background-color $transition_theme, border $transition_theme, transform $transition_base, opacity $transition_base;
+    box-shadow: 0px 0px 20px #888;
+
+    
+
+    & h1 {
+        //margin-top: 20px;
+        font-size: 36px;
+        color: map.get($light, "text_hard");
+        margin-bottom: 20px;
+        text-align: center;
+        @include respond-to(sm) {
+            font-size: 24px;
+        }
+    }
+
+    & p {
+        font-size: 24px;
+        margin-left: auto;
+        margin-right: auto;
+        color: map.get($light, "text_soft");
+        white-space: break-spaces;
+
+        @include respond-to(sm) {
+            font-size: 20px;
+        }
+    }
+
+    & button {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+}
+
+.modal_common.active .message__container{
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+
+body.dark {
+    .message__container {
+        border: 2px solid map.get($dark, "border");
+        background-color: map.get($dark, "bg_side-panel");
+
+        & h1 {
+            color: map.get($dark, "text_hard");
+        }
+
+        & p {
+            color: map.get($dark, "text_soft");
+        }
+    }
+}

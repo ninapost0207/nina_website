@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.info_portfolio-slide__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+    & > p {
+        text-align: center;
+        white-space: pre-wrap;
+        font-size: 16px !important;
+    }
+    & > a {
+        text-decoration: none;
+        color: map.get($light, "nav_selected");
+
+        & > svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

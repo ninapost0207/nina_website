@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../assets/css/base.scss';
+
+
+.preloader__container {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	flex-direction: column;
+	position: relative;
+	margin: 0;
+
+    & .preloader {
+        border-radius: 50%;
+        width: 10%;
+        min-width: 50px;
+        aspect-ratio: 1;
+        margin: 60px auto;
+        position: relative;
+        border-top: 10px solid transparent;
+        border-right: 10px solid rgba(96, 155, 202, 0.7);
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid rgba(96, 155, 202, 0.7);
+        animation: preloader-rotate 1s infinite linear;
+    }   
+
+    & .preloader__text {
+        display: none;
+    }
+}
+
+
+@keyframes preloader-rotate {
+	0% {
+		transform: rotate(90deg);
+	}
+	100% {
+		transform: rotate(450deg);
+	}
+}
+
+
+

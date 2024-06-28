@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+//@import '../../../assets/css/base.scss';
+
+.info_portfolio__container {
+    & p {
+        text-align: center;
+        font-size: 18px;
+        line-height: 130%;
+        width: 100%;
+        font-weight: 700;
+        white-space: pre-wrap;
+
+
+        
+        @include respond-to(lg) {
+            font-size: 16px;
+        }
+
+        @include respond-to(sm) {
+            font-size: 14px;
+        }
+    }
+}
